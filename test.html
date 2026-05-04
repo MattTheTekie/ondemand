@@ -1,0 +1,234 @@
+<style>
+/* styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.tv-ui {
+  width: 1100px;
+  padding: 20px 30px;
+  background: radial-gradient(circle at top, #1b3a6a 0, #020617 60%);
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Header */
+.tv-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ff7f, #00b36b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #003322;
+}
+
+.logo-text {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #e5ffe5;
+}
+
+.time {
+  font-size: 0.95rem;
+  color: #e5e7eb;
+}
+
+.tv-guide {
+  background: #b91c1c;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+/* Main layout */
+.tv-main {
+  display: grid;
+  grid-template-columns: 2fr 1.4fr;
+  gap: 20px;
+}
+
+/* Left info panel */
+.info-panel {
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 8px;
+  padding: 16px 18px 18px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.info-title {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+.info-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #facc15;
+  margin-bottom: 6px;
+}
+
+.info-description {
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  line-height: 1.4;
+  max-width: 95%;
+  margin-bottom: 16px;
+}
+
+/* Menu grid */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+}
+
+.menu-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-btn {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: #e5e7eb;
+  padding: 8px 14px;
+  text-align: left;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.menu-btn-highlight
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ArpWire TV UI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="tv-ui">
+    <header class="tv-header">
+      <div class="logo">
+        <span class="logo-icon">A</span>
+        <span class="logo-text">ARPWIRE TV</span>
+      </div>
+      <div class="time">11:47am</div>
+      <button class="tv-guide">TV GUIDE</button>
+    </header>
+
+    <main class="tv-main">
+      <section class="info-panel">
+        <div class="info-title">ON DEMAND MENU</div>
+        <div class="info-section">
+          <div class="info-section-title">☁ Weather</div>
+          <p class="info-description">
+            Plan your perfect day, indoors or outdoors. View the local forecasts, radar maps, and regional outlooks to keep you and the family comfortable, rain or shine.
+          </p>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-column">
+            <button class="menu-btn menu-btn-highlight">Weather</button>
+            <button class="menu-btn">Premium Channels</button>
+            <button class="menu-btn">Cable Favorites</button>
+            <button class="menu-btn">Local News</button>
+          </div>
+          <div class="menu-column">
+            <button class="menu-btn">Movies</button>
+            <button class="menu-btn">Celebrity Entertainment</button>
+            <button class="menu-btn">ArpWire TV Choice</button>
+            <button class="menu-btn">HD On Demand</button>
+            <button class="menu-btn">Saved Searches</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="weather-panel">
+        <div class="weather-header">weatherscan</div>
+
+        <div class="weather-now">
+          <div class="weather-city">Miami</div>
+          <div class="weather-temp">NOW 78°</div>
+          <div class="weather-uv">UV Index <span>Very High</span></div>
+        </div>
+
+        <div class="weather-map">
+          <div class="map-placeholder">[Radar Map]</div>
+        </div>
+
+        <div class="weather-international">
+          <div class="section-title">INTERNATIONAL FORECASTS</div>
+          <ul>
+            <li><span>Madrid</span> <span>73 / 57 → 75 / 51</span></li>
+            <li><span>Tokyo</span> <span>68 / 55 → 77 / 51</span></li>
+            <li><span>Mexico City</span> <span>65 / 48 → 58 / 55</span></li>
+          </ul>
+        </div>
+
+        <div class="weather-today">
+          <div class="section-title">TODAY'S FORECAST</div>
+          <div class="forecast-row">
+            <div class="forecast-time">3 pm</div>
+            <div class="forecast-temp">83°</div>
+          </div>
+          <div class="forecast-row">
+            <div class="forecast-time">5 pm</div>
+            <div class="forecast-temp">82°</div>
+          </div>
+          <div class="forecast-row">
+            <div class="forecast-time">8 pm</div>
+            <div class="forecast-temp">79°</div>
+          </div>
+          <div class="forecast-row">
+            <div class="forecast-time">Midnight</div>
+            <div class="forecast-temp">76°</div>
+          </div>
+
+          <div class="weather-notes">
+            Jacksonville: 82 fair<br />
+            Miami: 78 partly cloudy
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>

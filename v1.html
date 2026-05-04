@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>On Demand Simulator</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+    }
+
+    /* 4:3 frame */
+    .screen {
+      width: min(100vw, calc(100vh * 4 / 3));
+      height: min(100vh, calc(100vw * 3 / 4));
+      aspect-ratio: 4 / 3;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to bottom, #00458f, #003574);
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      color: white;
+    }
+
+    .top {
+      display: grid;
+      grid-template-columns: 1.0fr 0.6fr;
+      flex: 0 0 40%;
+      border-bottom: 4px solid #001a44;
+    }
+
+    .brand-wrap {
+      display: flex;
+      flex-direction: column;
+      background: #003b82;
+    }
+
+.brand {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;  /* keep top alignment */
+  justify-content: flex-start;
+  padding-left: 30px;
+  padding-top: 12px;        /* 👈 small downward push */
+}
+.brand img {
+  max-height: 70%;
+  max-width: 80%;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+}
+
+    .hero-under {
+      background: linear-gradient(to bottom, #2f6fbc, #4d89cf);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 14px 20px;
+      gap: 10px;
+      text-shadow: 3px 3px 2px rgba(0,0,0,0.6);
+      border-top: 3px solid rgba(255,255,255,0.15);
+    }
+
+
+    .hero-under .on {
+      font-size: 1.3rem;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .hero-under .sub {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffe88a;
+      text-align: left;
+    }
+
+    .visual {
+      background: radial-gradient(circle at center, #7fc8ff, #4477aa, #2d3e52);
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .visual iframe {
+      width: 105%;
+      height: 100%;
+      border: 0;
+    }
+
+        /* CLOCK OVERLAY */
+    #clock {
+      position: absolute;
+      top: 180px;
+      right: 930px;
+
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #ffe88a;
+
+      padding: 6px 10px;
+      border-radius: 10px;
+
+
+      text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
+      z-index: 5;
+      white-space: nowrap;
+    }
+
+
+        .clock-img {
+      width: 350px;
+      height: 100px;
+      position: absolute;
+      top: 130px;
+      right: 700px;}
+
+    .menu {
+      flex: 1;
+      padding: 18px 90px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 18px;
+      align-content: center;
+    }
+
+    .btn {
+      border-radius: 100px;
+      padding: 18px 22px;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 800;
+      cursor: pointer;
+      user-select: none;
+      background: linear-gradient(to bottom, #2e67b6, #1e4f99);
+      border: 3px solid rgba(255,255,255,0.45);
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.25),
+                  0 4px 8px rgba(0,0,0,0.35);
+      text-shadow: 2px 2px 2px rgba(0,0,0,0.65);
+      transition: transform 0.15s, filter 0.15s;
+    }
+
+    .btn.selected {
+      background: linear-gradient(to bottom, #f7efb0, #e5d76f);
+      color: black;
+      text-shadow: none;
+    }
+
+    .btn:hover { filter: brightness(1.08); }
+    .btn:active { transform: scale(0.98); }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="screen">
+
+    <div class="top">
+      <div class="brand-wrap">
+        <div class="brand"><img src="https://www.veltron.net/images/site-banner.png"/></div>
+
+        <div class="hero-under">
+          <div class="on">▶︎N DEMAND MENU</div>
+          <div class="sub">Plan your perfect day, indoors or outdoors. View the local forecasts, radar maps, and regional outlooks to keep you and the family comfortable, rain or shine.</div>
+        </div>
+      </div>
+
+            <div class="visual">
+        <div id="clock">--:-- </div>
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.fandom.com%2Fbrand%2Fimages%2FTV-Guide_Logo_Family-Brands_1-p-3200.png&f=1&nofb=1&ipt=10d7c206e9bd996071105821925c3c6f77b22999e5585350b27728e73509dcc9" alt="icon" class="clock-img">
+        <iframe src="https://v2.weatherscan.net/" title="WeatherScan"></iframe>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div class="btn selected">Weather</div>
+      <div class="btn">Movies</div>
+      <div class="btn">Premium Channels</div>
+      <div class="btn">Celebrity Entertainment</div>
+      <div class="btn">Cable Favourites</div>
+      <div class="btn">Veltron TV Choice</div>
+      <div class="btn">Local News</div>
+      <div class="btn">HD On Demand</div>
+      <div class="btn">Primetime</div>
+      <div class="btn">Saved Searches</div>
+    </div>
+
+  </div>
+
+  <script>
+    const buttons = [...document.querySelectorAll('.btn')];
+    let selected = 0;
+
+    function updateSelection(index) {
+      buttons[selected].classList.remove('selected');
+      selected = (index + buttons.length) % buttons.length;
+      buttons[selected].classList.add('selected');
+      buttons[selected].focus();
+    }
+
+    buttons.forEach((btn, i) => {
+      btn.tabIndex = 0;
+      btn.addEventListener('click', () => updateSelection(i));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      const cols = 2;
+
+      if (e.key === 'ArrowRight') updateSelection(selected + 1);
+      if (e.key === 'ArrowLeft') updateSelection(selected - 1);
+      if (e.key === 'ArrowDown') updateSelection(selected + cols);
+      if (e.key === 'ArrowUp') updateSelection(selected - cols);
+
+      if (e.key === 'Enter' || e.key === ' ') {
+        alert('Opening: ' + buttons[selected].innerText);
+      }
+    });
+
+        function updateClock() {
+      const now = new Date();
+      let h = now.getHours();
+      let m = now.getMinutes().toString().padStart(2, '0');
+
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+
+      document.getElementById('clock').textContent = `${h}:${m} ${ampm}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
