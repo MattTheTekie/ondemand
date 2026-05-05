@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>On Demand Simulator</title>
-
 <style>
 body {
   margin: 0;
@@ -24,13 +23,45 @@ body {
   position: relative;
   overflow: hidden;
 }
-
+.filler {
+  width: 83px;
+  height: 380px;
+  position: absolute;
+  top: 33px;
+  right: 730px;
+  z-index: 10;
+}
+.filler2 {
+  width: 85px;
+  height: 380px;
+  position: absolute;
+  top: 33px;
+  right: 145px;
+  z-index: 11;
+}
+.filler3 {
+  width: 500px;
+  height: 2px;
+  position: absolute;
+  top: 411px;
+  right: 230px;
+  z-index: 12;
+}
+.visual iframe {
+  width: 665px;
+  height: 378px;
+  border: 0px;
+  position: absolute;
+  border-radius: 10px;
+  top: 35px;
+  right: 148px;
+  z-index: 1;
+}
 .content {
   text-align: center;
   text-shadow: 0 2px 5px rgba(0,0,0,0.7);
   z-index: 2;
 }
-
 .brand {
   width: 450px;
   height: 110px;
@@ -38,22 +69,16 @@ body {
   top: 55px;
   left: 50px;
 }
-
-/* CLOCK */
 #clock {
   position: absolute;
   top: 110px;
   right: 980px;
-
   font-size: 2rem;
-
   padding: 6px 10px;
   border-radius: 10px;
-
   text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
   z-index: 5;
 }
-
 .clock-img {
   width: 420px;
   height: 150px;
@@ -61,8 +86,6 @@ body {
   top: 23px;
   right: 700px;
 }
-
-/* TEXT ITEMS */
 #text1, #text2, #text3, #text4,
 #text5, #text6, #text7, #text8, #text9 {
   position: absolute;
@@ -71,42 +94,27 @@ body {
   text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
   white-space: nowrap;
 }
-
-#text1 { top: 560px; right: 1200px; }
-#text2 { top: 645px; right: 1200px; }
-#text3 { top: 730px; right: 1220px; }
+#text1 { top: 563px; right: 1160px; }
+#text2 { top: 650px; right: 1180px; }
+#text3 { top: 735px; right: 1220px; }
 #text4 { top: 820px; right: 1230px; }
-
-#text5 { top: 480px; right: 650px; }
-#text6 { top: 565px; right: 530px; }
+#text5 { top: 475px; right: 650px; }
+#text6 { top: 570px; right: 530px; }
 #text7 { top: 655px; right: 550px; }
 #text8 { top: 740px; right: 590px; }
-#text9 { top: 820px; right: 600px; }
-
-
-
-    .visual iframe {
-      width: 665px;
-      height: 378px;
-      border: 0px;
-      position: absolute;
-      top: 35px;
-      right: 148px;
-    }
-
+#text9 { top: 825px; right: 590px; }
 </style>
 </head>
-
 <body>
-            <div class="visual">
-        <iframe src="https://v2.weatherscan.net/" title="WeatherScan"></iframe>
+<div class="visual">
+<img src="filler.png" class="filler">
+<img src="filler.png" class="filler2">
+<img src="filler.png" class="filler3">
+<iframe src="https://v2.weatherscan.net" title="WeatherScan"></iframe>
 </div>
 <img src="https://www.veltron.net/images/site-banner.png" class="brand">
-
 <div id="clock">--:--</div>
-
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.fandom.com%2Fbrand%2Fimages%2FTV-Guide_Logo_Family-Brands_1-p-3200.png" class="clock-img">
-
 <div id="text1">Premium Channels</div>
 <div id="text2">Cable Favourites</div>
 <div id="text3">Local News</div>
@@ -116,7 +124,6 @@ body {
 <div id="text7">VELTRON TV Choice</div>
 <div id="text8">HD On Demand</div>
 <div id="text9">Saved Searches</div>
-
 <script>
 function updateClock() {
   const now = new Date();
@@ -128,10 +135,8 @@ function updateClock() {
 
   document.getElementById('clock').textContent = `${h}:${m} ${ampm}`;
 }
-
 setInterval(updateClock, 1000);
 updateClock();
 </script>
-
 </body>
 </html>

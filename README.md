@@ -1,5 +1,5 @@
 # Comcast On-Demand Recreation
-[Insert Comcast On-Demand boilerplate text here.]
+[Comcast On Demand was an early video-on-demand (VOD) service offered by Comcast through its cable TV systems. This repository serves as a barebones frontend recreation of the service.]
 ## Progress
 [-] Version 1 [Complete] <br>
-[.] Version 2 [In Progress]
+[-] Version 2 [Complete]
