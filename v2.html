@@ -1,91 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Double Background</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On Demand Simulator</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
+<style>
+body {
+  margin: 0;
+  height: 100vh;
 
-      /* TWO BACKGROUNDS */
-      background-image:
-        url("testing.png"),
-        url("background.png");
+  background-image: url("testing.png"), url("background.png");
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
 
-      background-size: cover, cover;
-      background-position: center, center;
-      background-repeat: no-repeat, no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: white;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      color: white;
+  position: relative;
+  overflow: hidden;
+}
 
-      position: relative;
-      overflow: hidden;
-    }
+.content {
+  text-align: center;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+  z-index: 2;
+}
 
-    .content {
-      text-align: center;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
-      z-index: 2;
-    }
+.brand {
+  width: 450px;
+  height: 110px;
+  position: absolute;
+  top: 55px;
+  left: 50px;
+}
 
-    /* CLOCK OVERLAY */
-    #clock {
+/* CLOCK */
+#clock {
+  position: absolute;
+  top: 110px;
+  right: 980px;
+
+  font-size: 2rem;
+
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
+  z-index: 5;
+}
+
+.clock-img {
+  width: 420px;
+  height: 150px;
+  position: absolute;
+  top: 23px;
+  right: 700px;
+}
+
+/* TEXT ITEMS */
+#text1, #text2, #text3, #text4,
+#text5, #text6, #text7, #text8, #text9 {
+  position: absolute;
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
+  white-space: nowrap;
+}
+
+#text1 { top: 560px; right: 1200px; }
+#text2 { top: 645px; right: 1200px; }
+#text3 { top: 730px; right: 1220px; }
+#text4 { top: 820px; right: 1230px; }
+
+#text5 { top: 480px; right: 650px; }
+#text6 { top: 565px; right: 530px; }
+#text7 { top: 655px; right: 550px; }
+#text8 { top: 740px; right: 590px; }
+#text9 { top: 820px; right: 600px; }
+
+
+
+    .visual iframe {
+      width: 665px;
+      height: 378px;
+      border: 0px;
       position: absolute;
-      top: 130px;
-      right: 970px;
-
-      font-size: 1.4rem;
-      #font-weight: 900;
-      #olor: #ffe88a;
-
-      padding: 6px 10px;
-      border-radius: 10px;
-
-      text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
-      z-index: 5;
-      white-space: nowrap;
+      top: 35px;
+      right: 148px;
     }
 
-
-        .clock-img {
-      width: 520px;
-      height: 165px;
-      position: absolute;
-      top: 23px;
-      right: 625px;}
-
-  </style>
+</style>
 </head>
 
 <body>
+            <div class="visual">
+        <iframe src="https://v2.weatherscan.net/" title="WeatherScan"></iframe>
+</div>
+<img src="https://www.veltron.net/images/site-banner.png" class="brand">
 
-  <div id="clock"></div>
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.fandom.com%2Fbrand%2Fimages%2FTV-Guide_Logo_Family-Brands_1-p-3200.png&f=1&nofb=1&ipt=10d7c206e9bd996071105821925c3c6f77b22999e5585350b27728e73509dcc9" alt="icon" class="clock-img">
-  <div class="content">
-  </div>
+<div id="clock">--:--</div>
 
-  <script>
-    function updateClock() {
-      const now = new Date();
-      let h = now.getHours();
-      let m = now.getMinutes().toString().padStart(2, '0');
+<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.fandom.com%2Fbrand%2Fimages%2FTV-Guide_Logo_Family-Brands_1-p-3200.png" class="clock-img">
 
-      const ampm = h >= 12 ? 'PM' : 'AM';
-      h = h % 12 || 12;
+<div id="text1">Premium Channels</div>
+<div id="text2">Cable Favourites</div>
+<div id="text3">Local News</div>
+<div id="text4">Primetime</div>
+<div id="text5">Movies</div>
+<div id="text6">Celebrity Entertainment</div>
+<div id="text7">VELTRON TV Choice</div>
+<div id="text8">HD On Demand</div>
+<div id="text9">Saved Searches</div>
 
-      document.getElementById('clock').textContent = `${h}:${m} ${ampm}`;
-    }
+<script>
+function updateClock() {
+  const now = new Date();
+  let h = now.getHours();
+  let m = now.getMinutes().toString().padStart(2, '0');
 
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+
+  document.getElementById('clock').textContent = `${h}:${m} ${ampm}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
 
 </body>
 </html>
